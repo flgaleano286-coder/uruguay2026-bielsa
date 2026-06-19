@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uruguay 2026: Sos Bielsa — Diagrama de Flujo</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: #f5f7fa; padding: 24px; }
+  .card { background: white; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.10); padding: 28px 24px 32px; max-width: 1200px; margin: 0 auto; }
+  .title { text-align:center; font-size:22px; font-weight:bold; color:#1F5C99; margin-bottom:4px; }
+  .sub   { text-align:center; font-size:12px; color:#999; margin-bottom:6px; }
+  .badge-row { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
+  .badge { background:#EBF3FA; color:#1F5C99; border-radius:20px; padding:3px 12px; font-size:11px; font-weight:bold; }
+  .legend { display:flex; justify-content:center; gap:20px; margin-bottom:18px; font-size:11px; color:#555; flex-wrap:wrap; }
+  .legend span { display:flex; align-items:center; gap:5px; }
+  .dot { width:13px; height:13px; border-radius:3px; display:inline-block; }
+  svg { display:block; width:100%; height:auto; }
+  .footer { text-align:center; margin-top:20px; font-size:10px; color:#bbb; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="title">🇺🇾 Uruguay 2026: Sos Bielsa 🏆</div>
+  <div class="sub">Trabajo Final · Laboratorio 6 · Microprocesadores · UCU</div>
+  <div class="badge-row">
+    <span class="badge">ATmega328P Xplained Mini</span>
+    <span class="badge">Display LED RGB 32×32</span>
+    <span class="badge">3 botones (PC1, PC2, PC3)</span>
+    <span class="badge">16 pantallas · 1024 bytes c/u</span>
+    <span class="badge">Nivel 2 en rama 3.2</span>
+  </div>
+  <div class="legend">
+    <span><span class="dot" style="background:#1F5C99"></span>Pantalla de inicio</span>
+    <span><span class="dot" style="background:#2E75B6"></span>Pantalla de decisión</span>
+    <span><span class="dot" style="background:#7B5E00;border:2px solid #FFD700"></span>Decisión Nivel 2</span>
+    <span><span class="dot" style="background:#375623"></span>Victoria (17/27 ≈ 63%)</span>
+    <span><span class="dot" style="background:#9C0006"></span>Derrota</span>
+    <span style="color:#2E75B6;font-weight:bold">── B1 (PC1)</span>
+    <span style="color:#888;font-weight:bold">── B2 (PC2)</span>
+    <span style="color:#E07B39;font-weight:bold">── B3 (PC3)</span>
+  </div>
+
+<svg viewBox="0 0 1110 710" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="ab1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0,6 3,0 6" fill="#2E75B6"/></marker>
+  <marker id="ab2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0,6 3,0 6" fill="#888"/></marker>
+  <marker id="ab3" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0,6 3,0 6" fill="#E07B39"/></marker>
+  <marker id="abg" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0,6 3,0 6" fill="#FFD700"/></marker>
+</defs>
+
+<!-- nivel labels -->
+<text x="4" y="52" font-size="9" font-weight="bold" fill="#1F5C99" font-family="Arial">NIVEL 0</text>
+<text x="4" y="152" font-size="9" font-weight="bold" fill="#2E75B6" font-family="Arial">NIVEL 1</text>
+<text x="4" y="310" font-size="9" font-weight="bold" fill="#555" font-family="Arial">TERMINALES</text>
+<text x="4" y="378" font-size="9" font-weight="bold" fill="#B8860B" font-family="Arial">NIVEL 2</text>
+
+<!-- P0 -->
+<rect x="420" y="22" width="270" height="52" rx="8" fill="#1F5C99"/>
+<text x="555" y="40" text-anchor="middle" fill="white" font-weight="bold" font-size="13" font-family="Arial">P0 · PANTALLA DE INICIO</text>
+<text x="555" y="55" text-anchor="middle" fill="#cce" font-size="10" font-family="Arial">Final del Mundial. Sos Bielsa.</text>
+<text x="555" y="67" text-anchor="middle" fill="#cce" font-size="10" font-family="Arial">¿Con qué formación salís?</text>
+
+<!-- flechas P0 -->
+<path d="M 480 74 C 460 112 280 118 178 132" stroke="#2E75B6" stroke-width="1.6" fill="none" marker-end="url(#ab1)"/>
+<text x="308" y="104" font-size="9" font-weight="bold" fill="#2E75B6" font-family="Arial">B1</text>
+<path d="M 555 74 L 555 132" stroke="#888" stroke-width="1.6" fill="none" marker-end="url(#ab2)"/>
+<text x="560" y="108" font-size="9" font-weight="bold" fill="#888" font-family="Arial">B2</text>
+<path d="M 630 74 C 650 112 820 118 932 132" stroke="#E07B39" stroke-width="1.6" fill="none" marker-end="url(#ab3)"/>
+<text x="796" y="104" font-size="9" font-weight="bold" fill="#E07B39" font-family="Arial">B3</text>
+
+<!-- P1 -->
+<rect x="73" y="132" width="210" height="60" rx="7" fill="#2E75B6"/>
+<text x="178" y="150" text-anchor="middle" fill="white" font-weight="bold" font-size="12" font-family="Arial">P1 · 4-4-2 Defensivo</text>
+<text x="178" y="164" text-anchor="middle" fill="#ddf" font-size="9" font-family="Arial">Min 45: 0-0. Descanso.</text>
+<text x="178" y="176" text-anchor="middle" fill="#ddf" font-size="9" font-family="Arial">¿Qué les decís?</text>
+<text x="178" y="186" text-anchor="middle" fill="#aac8ff" font-size="8.5" font-family="Arial">Pantalla 1</text>
+
+<!-- P2 -->
+<rect x="450" y="132" width="210" height="60" rx="7" fill="#2E75B6"/>
+<text x="555" y="150" text-anchor="middle" fill="white" font-weight="bold" font-size="12" font-family="Arial">P2 · 4-3-3 Ofensivo</text>
+<text x="555" y="164" text-anchor="middle" fill="#ddf" font-size="9" font-family="Arial">Min 30: 1-0 UY. Brasil aprieta.</text>
+<text x="555" y="176" text-anchor="middle" fill="#ddf" font-size="9" font-family="Arial">¿Qué hacés?</text>
+<text x="555" y="186" text-anchor="middle" fill="#aac8ff" font-size="8.5" font-family="Arial">Pantalla 2</text>
+
+<!-- P3 -->
+<rect x="827" y="132" width="210" height="60" rx="7" fill="#2E75B6"/>
+<text x="932" y="150" text-anchor="middle" fill="white" font-weight="bold" font-size="12" font-family="Arial">P3 · Todos los Cracks</text>
+<text x="932" y="164" text-anchor="middle" fill="#ddf" font-size="9" font-family="Arial">Min 60: 1-1. Tenés 2 cambios.</text>
+<text x="932" y="176" text-anchor="middle" fill="#ddf" font-size="9" font-family="Arial">¿A quién ponés?</text>
+<text x="932" y="186" text-anchor="middle" fill="#aac8ff" font-size="8.5" font-family="Arial">Pantalla 3</text>
+
+<!-- separator -->
+<line x1="30" y1="214" x2="1080" y2="214" stroke="#e8e8e8" stroke-width="1" stroke-dasharray="5,4"/>
+
+<!-- flechas P1 -->
+<path d="M 130 192 L 64 274" stroke="#2E75B6" stroke-width="1.3" fill="none" marker-end="url(#ab1)"/>
+<text x="82" y="238" font-size="8.5" font-weight="bold" fill="#2E75B6" font-family="Arial">B1</text>
+<path d="M 178 192 L 178 274" stroke="#888" stroke-width="1.3" fill="none" marker-end="url(#ab2)"/>
+<text x="183" y="238" font-size="8.5" font-weight="bold" fill="#888" font-family="Arial">B2</text>
+<path d="M 226 192 L 292 274" stroke="#E07B39" stroke-width="1.3" fill="none" marker-end="url(#ab3)"/>
+<text x="263" y="238" font-size="8.5" font-weight="bold" fill="#E07B39" font-family="Arial">B3</text>
+
+<!-- flechas P2 -->
+<path d="M 507 192 L 441 274" stroke="#2E75B6" stroke-width="1.3" fill="none" marker-end="url(#ab1)"/>
+<text x="460" y="238" font-size="8.5" font-weight="bold" fill="#2E75B6" font-family="Arial">B1</text>
+<path d="M 555 192 L 555 274" stroke="#888" stroke-width="1.3" fill="none" marker-end="url(#ab2)"/>
+<text x="560" y="238" font-size="8.5" font-weight="bold" fill="#888" font-family="Arial">B2</text>
+<path d="M 603 192 L 669 274" stroke="#E07B39" stroke-width="1.3" fill="none" marker-end="url(#ab3)"/>
+<text x="638" y="238" font-size="8.5" font-weight="bold" fill="#E07B39" font-family="Arial">B3</text>
+
+<!-- flechas P3 -->
+<path d="M 884 192 L 818 274" stroke="#2E75B6" stroke-width="1.3" fill="none" marker-end="url(#ab1)"/>
+<text x="836" y="238" font-size="8.5" font-weight="bold" fill="#2E75B6" font-family="Arial">B1</text>
+<path d="M 932 192 L 932 274" stroke="#888" stroke-width="1.3" fill="none" marker-end="url(#ab2)"/>
+<text x="937" y="238" font-size="8.5" font-weight="bold" fill="#888" font-family="Arial">B2</text>
+<path d="M 980 192 L 1046 274" stroke="#E07B39" stroke-width="1.3" fill="none" marker-end="url(#ab3)"/>
+<text x="1003" y="238" font-size="8.5" font-weight="bold" fill="#E07B39" font-family="Arial">B3</text>
+
+<!-- 9 terminales (P1 branch) -->
+<rect x="7"   y="274" width="114" height="74" rx="6" fill="#375623"/>
+<text x="64"  y="289" text-anchor="middle" fill="#90EE90" font-size="8.5" font-weight="bold" font-family="Arial">1.1 · VICTORIA</text>
+<text x="64"  y="301" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Arenga épica.</text>
+<text x="64"  y="312" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Gol Cavani 88'.</text>
+<text x="64"  y="323" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Uruguay 1-0.</text>
+<text x="64"  y="340" text-anchor="middle" fill="#90EE90" font-size="8.5" font-weight="bold" font-family="Arial">¡CAMPEONES!</text>
+
+<rect x="121" y="274" width="114" height="74" rx="6" fill="#9C0006"/>
+<text x="178" y="289" text-anchor="middle" fill="#ffaaaa" font-size="8.5" font-weight="bold" font-family="Arial">1.2 · DERROTA</text>
+<text x="178" y="301" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Cambio táctico</text>
+<text x="178" y="312" text-anchor="middle" fill="white" font-size="8" font-family="Arial">equivocado.</text>
+<text x="178" y="323" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Brasil 2-0.</text>
+<text x="178" y="340" text-anchor="middle" fill="#ffaaaa" font-size="8.5" font-weight="bold" font-family="Arial">Game over.</text>
+
+<rect x="235" y="274" width="114" height="74" rx="6" fill="#375623"/>
+<text x="292" y="289" text-anchor="middle" fill="#90EE90" font-size="8.5" font-weight="bold" font-family="Arial">1.3 · VICTORIA</text>
+<text x="292" y="301" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Hidratación +</text>
+<text x="292" y="312" text-anchor="middle" fill="white" font-size="8" font-family="Arial">mensaje Bielsa.</text>
+<text x="292" y="323" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Gol agónico 75'.</text>
+<text x="292" y="340" text-anchor="middle" fill="#90EE90" font-size="8.5" font-weight="bold" font-family="Arial">¡CAMPEONES!</text>
+
+<!-- P2 terminales -->
+<rect x="384" y="274" width="114" height="74" rx="6" fill="#375623"/>
+<text x="441" y="289" text-anchor="middle" fill="#90EE90" font-size="8.5" font-weight="bold" font-family="Arial">2.1 · VICTORIA</text>
+<text x="441" y="301" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Cambio defensivo.</text>
+<text x="441" y="312" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Aguantás el 1-0.</text>
+<text x="441" y="323" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Final: 1-0.</text>
+<text x="441" y="340" text-anchor="middle" fill="#90EE90" font-size="8.5" font-weight="bold" font-family="Arial">¡CAMPEONES!</text>
+
+<rect x="498" y="274" width="114" height="74" rx="6" fill="#375623"/>
+<text x="555" y="289" text-anchor="middle" fill="#90EE90" font-size="8.5" font-weight="bold" font-family="Arial">2.2 · VICTORIA</text>
+<text x="555" y="301" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Seguís atacando.</text>
+<text x="555" y="312" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Neymar se lesiona.</text>
+<text x="555" y="323" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Uruguay 2-0.</text>
+<text x="555" y="340" text-anchor="middle" fill="#90EE90" font-size="8.5" font-weight="bold" font-family="Arial">¡CAMPEONES!</text>
+
+<rect x="612" y="274" width="114" height="74" rx="6" fill="#9C0006"/>
+<text x="669" y="289" text-anchor="middle" fill="#ffaaaa" font-size="8.5" font-weight="bold" font-family="Arial">2.3 · DERROTA</text>
+<text x="669" y="301" text-anchor="middle" fill="white" font-size="8" font-family="Arial">No tocás nada.</text>
+<text x="669" y="312" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Empate 1-1.</text>
+<text x="669" y="323" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Penales. Brasil.</text>
+<text x="669" y="340" text-anchor="middle" fill="#ffaaaa" font-size="8.5" font-weight="bold" font-family="Arial">Game over.</text>
+
+<!-- P3 terminales -->
+<rect x="761" y="274" width="114" height="74" rx="6" fill="#375623"/>
+<text x="818" y="289" text-anchor="middle" fill="#90EE90" font-size="8.5" font-weight="bold" font-family="Arial">3.1 · VICTORIA</text>
+<text x="818" y="301" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Entra Suárez.</text>
+<text x="818" y="312" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Golazo min 88'.</text>
+<text x="818" y="323" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Uruguay 2-1.</text>
+<text x="818" y="340" text-anchor="middle" fill="#90EE90" font-size="8.5" font-weight="bold" font-family="Arial">¡CAMPEONES!</text>
+
+<!-- P3.2 → DECISIÓN NIVEL 2 (gold) -->
+<rect x="875" y="274" width="114" height="74" rx="6" fill="#6B4C00" stroke="#FFD700" stroke-width="2.5"/>
+<text x="932" y="289" text-anchor="middle" fill="#FFD700" font-size="8.5" font-weight="bold" font-family="Arial">P3.2 · PENALES</text>
+<text x="932" y="301" text-anchor="middle" fill="#FFE87C" font-size="8" font-family="Arial">Empate 1-1.</text>
+<text x="932" y="312" text-anchor="middle" fill="#FFE87C" font-size="8" font-family="Arial">¿A dónde tirás</text>
+<text x="932" y="323" text-anchor="middle" fill="#FFE87C" font-size="8" font-family="Arial">el penal?</text>
+<text x="932" y="340" text-anchor="middle" fill="#FFD700" font-size="8" font-weight="bold" font-family="Arial">★ NIVEL 2</text>
+
+<rect x="989" y="274" width="114" height="74" rx="6" fill="#9C0006"/>
+<text x="1046" y="289" text-anchor="middle" fill="#ffaaaa" font-size="8.5" font-weight="bold" font-family="Arial">3.3 · DERROTA</text>
+<text x="1046" y="301" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Cambio equivocado.</text>
+<text x="1046" y="312" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Brasil 2-1 en 89'.</text>
+<text x="1046" y="323" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Se acabó.</text>
+<text x="1046" y="340" text-anchor="middle" fill="#ffaaaa" font-size="8.5" font-weight="bold" font-family="Arial">Game over.</text>
+
+<!-- separator nivel 2 -->
+<line x1="750" y1="365" x2="1103" y2="365" stroke="#B8860B" stroke-width="1" stroke-dasharray="4,3"/>
+
+<!-- flechas P3.2 → sub-terminales (B1=azul, B2=gris, B3=naranja) -->
+<path d="M 905 348 C 905 362 830 362 830 378" stroke="#2E75B6" stroke-width="1.3" fill="none" marker-end="url(#ab1)"/>
+<text x="852" y="360" font-size="8.5" font-weight="bold" fill="#2E75B6" font-family="Arial">B1</text>
+<path d="M 932 348 L 932 378" stroke="#888" stroke-width="1.3" fill="none" marker-end="url(#ab2)"/>
+<text x="937" y="363" font-size="8.5" font-weight="bold" fill="#888" font-family="Arial">B2</text>
+<path d="M 959 348 C 959 362 1044 362 1044 378" stroke="#E07B39" stroke-width="1.3" fill="none" marker-end="url(#ab3)"/>
+<text x="1002" y="360" font-size="8.5" font-weight="bold" fill="#E07B39" font-family="Arial">B3</text>
+
+<!-- Sub-terminales Nivel 2 -->
+<!-- 3.2.1 WIN (B1 = esquina izquierda) -->
+<rect x="772" y="378" width="112" height="68" rx="6" fill="#375623" stroke="#2E75B6" stroke-width="1.5"/>
+<text x="828" y="393" text-anchor="middle" fill="#90EE90" font-size="8.5" font-weight="bold" font-family="Arial">3.2.1 · VICTORIA</text>
+<text x="828" y="405" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Esquina izquierda.</text>
+<text x="828" y="416" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Golero no llega.</text>
+<text x="828" y="427" text-anchor="middle" fill="white" font-size="8" font-family="Arial">¡Goool!</text>
+<text x="828" y="441" text-anchor="middle" fill="#90EE90" font-size="8.5" font-weight="bold" font-family="Arial">¡CAMPEONES!</text>
+
+<!-- 3.2.2 LOSE (B2 = centro) -->
+<rect x="876" y="378" width="112" height="68" rx="6" fill="#9C0006" stroke="#888" stroke-width="1.5"/>
+<text x="932" y="393" text-anchor="middle" fill="#ffaaaa" font-size="8.5" font-weight="bold" font-family="Arial">3.2.2 · DERROTA</text>
+<text x="932" y="405" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Centro del arco.</text>
+<text x="932" y="416" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Golero lo ataja.</text>
+<text x="932" y="427" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Brasil campeón.</text>
+<text x="932" y="441" text-anchor="middle" fill="#ffaaaa" font-size="8.5" font-weight="bold" font-family="Arial">Game over.</text>
+
+<!-- 3.2.3 WIN (B3 = esquina derecha) -->
+<rect x="980" y="378" width="112" height="68" rx="6" fill="#375623" stroke="#E07B39" stroke-width="1.5"/>
+<text x="1036" y="393" text-anchor="middle" fill="#90EE90" font-size="8.5" font-weight="bold" font-family="Arial">3.2.3 · VICTORIA</text>
+<text x="1036" y="405" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Esquina derecha.</text>
+<text x="1036" y="416" text-anchor="middle" fill="white" font-size="8" font-family="Arial">Potente y cruzado.</text>
+<text x="1036" y="427" text-anchor="middle" fill="white" font-size="8" font-family="Arial">¡Goool!</text>
+<text x="1036" y="441" text-anchor="middle" fill="#90EE90" font-size="8.5" font-weight="bold" font-family="Arial">¡CAMPEONES!</text>
+
+<!-- summary bar -->
+<rect x="7" y="462" width="1096" height="22" rx="5" fill="#EBF3FA"/>
+<text x="555" y="477" text-anchor="middle" fill="#1F5C99" font-size="10" font-weight="bold" font-family="Arial">
+  Probabilidad de victoria: 17/27 ≈ 63%  ·  16 pantallas totales  ·  16 imágenes 32×32 a diseñar  ·  1 imagen = 1024 bytes
+</text>
+
+<!-- tabla referencia -->
+<rect x="7" y="492" width="1096" height="208" rx="4" fill="none" stroke="#e0e0e0" stroke-width="1"/>
+<rect x="7" y="492" width="1096" height="18" rx="4" fill="#1F5C99"/>
+<text x="62"  y="504" text-anchor="middle" fill="white" font-size="8.5" font-weight="bold" font-family="Arial">ID</text>
+<text x="310" y="504" text-anchor="middle" fill="white" font-size="8.5" font-weight="bold" font-family="Arial">Decisión tomada</text>
+<text x="700" y="504" text-anchor="middle" fill="white" font-size="8.5" font-weight="bold" font-family="Arial">Consecuencia mostrada en pantalla</text>
+<text x="1030" y="504" text-anchor="middle" fill="white" font-size="8.5" font-weight="bold" font-family="Arial">Resultado</text>
+<line x1="117" y1="510" x2="117" y2="700" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="503" y1="510" x2="503" y2="700" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="897" y1="510" x2="897" y2="700" stroke="#e0e0e0" stroke-width="0.5"/>
+
+<g font-size="8.5" font-family="Arial">
+<!-- alternating rows (13px each) -->
+<rect x="7" y="510" width="1096" height="14" fill="#f8f9fa"/>
+<rect x="7" y="524" width="1096" height="14" fill="white"/>
+<rect x="7" y="538" width="1096" height="14" fill="#f8f9fa"/>
+<rect x="7" y="552" width="1096" height="14" fill="white"/>
+<rect x="7" y="566" width="1096" height="14" fill="#f8f9fa"/>
+<rect x="7" y="580" width="1096" height="14" fill="white"/>
+<rect x="7" y="594" width="1096" height="14" fill="#f8f9fa"/>
+<rect x="7" y="608" width="1096" height="14" fill="white"/>
+<rect x="7" y="622" width="1096" height="14" fill="#f8f9fa"/>
+<rect x="7" y="636" width="1096" height="14" fill="#FFF8E1"/>
+<rect x="7" y="650" width="1096" height="14" fill="#FFF8E1"/>
+<rect x="7" y="664" width="1096" height="14" fill="#FFF8E1"/>
+
+<text x="62" y="521"  text-anchor="middle" fill="#375623" font-weight="bold">1.1 WIN</text>
+<text x="310" y="521" text-anchor="middle" fill="#333">B1 desde P1: Arenga motivacional al equipo en el descanso</text>
+<text x="700" y="521" text-anchor="middle" fill="#333">El equipo sale enchufado. Gol de Cavani en el 88'. Uruguay 1-0.</text>
+<text x="1030" y="521" text-anchor="middle" fill="#375623" font-weight="bold">VICTORIA</text>
+
+<text x="62" y="535"  text-anchor="middle" fill="#9C0006" font-weight="bold">1.2 LOSE</text>
+<text x="310" y="535" text-anchor="middle" fill="#333">B2 desde P1: Cambio táctico equivocado a los 45'</text>
+<text x="700" y="535" text-anchor="middle" fill="#333">Brasil aprovecha el espacio. Dos goles rápidos. Uruguay 0-2.</text>
+<text x="1030" y="535" text-anchor="middle" fill="#9C0006" font-weight="bold">DERROTA</text>
+
+<text x="62" y="549"  text-anchor="middle" fill="#375623" font-weight="bold">1.3 WIN</text>
+<text x="310" y="549" text-anchor="middle" fill="#333">B3 desde P1: Pausa de hidratación con mensaje de Bielsa</text>
+<text x="700" y="549" text-anchor="middle" fill="#333">Inspiración total. Gol agónico en el 75'. Uruguay 1-0.</text>
+<text x="1030" y="549" text-anchor="middle" fill="#375623" font-weight="bold">VICTORIA</text>
+
+<text x="62" y="563"  text-anchor="middle" fill="#375623" font-weight="bold">2.1 WIN</text>
+<text x="310" y="563" text-anchor="middle" fill="#333">B1 desde P2: Cambio defensivo, cerrás líneas</text>
+<text x="700" y="563" text-anchor="middle" fill="#333">Aguantás el 1-0 hasta el final. Uruguay campeón.</text>
+<text x="1030" y="563" text-anchor="middle" fill="#375623" font-weight="bold">VICTORIA</text>
+
+<text x="62" y="577"  text-anchor="middle" fill="#375623" font-weight="bold">2.2 WIN</text>
+<text x="310" y="577" text-anchor="middle" fill="#333">B2 desde P2: Seguís atacando, presión total</text>
+<text x="700" y="577" text-anchor="middle" fill="#333">Neymar se lesiona. Uruguay aprovecha. 2-0. ¡Campeones!</text>
+<text x="1030" y="577" text-anchor="middle" fill="#375623" font-weight="bold">VICTORIA</text>
+
+<text x="62" y="591"  text-anchor="middle" fill="#9C0006" font-weight="bold">2.3 LOSE</text>
+<text x="310" y="591" text-anchor="middle" fill="#333">B3 desde P2: No hacés ningún cambio</text>
+<text x="700" y="591" text-anchor="middle" fill="#333">Brasil empata 1-1. Penales. Brasil gana la copa.</text>
+<text x="1030" y="591" text-anchor="middle" fill="#9C0006" font-weight="bold">DERROTA</text>
+
+<text x="62" y="605"  text-anchor="middle" fill="#375623" font-weight="bold">3.1 WIN</text>
+<text x="310" y="605" text-anchor="middle" fill="#333">B1 desde P3: Entra Suárez como 9 punta</text>
+<text x="700" y="605" text-anchor="middle" fill="#333">Golazo en el minuto 88'. Uruguay 2-1. ¡Campeones!</text>
+<text x="1030" y="605" text-anchor="middle" fill="#375623" font-weight="bold">VICTORIA</text>
+
+<text x="62" y="619"  text-anchor="middle" fill="#9C0006" font-weight="bold">3.3 LOSE</text>
+<text x="310" y="619" text-anchor="middle" fill="#333">B3 desde P3: Cambio equivocado, rompe el esquema</text>
+<text x="700" y="619" text-anchor="middle" fill="#333">Brasil marca 2-1 en el 89'. Se acabó el sueño.</text>
+<text x="1030" y="619" text-anchor="middle" fill="#9C0006" font-weight="bold">DERROTA</text>
+
+<!-- Nivel 2 rows (amber background) -->
+<text x="62" y="633"  text-anchor="middle" fill="#B8860B" font-weight="bold">P3.2 →N2</text>
+<text x="310" y="633" text-anchor="middle" fill="#7B5E00">B2 desde P3: Doble cambio defensivo → penales 1-1</text>
+<text x="700" y="633" text-anchor="middle" fill="#7B5E00">Entrás al Nivel 2. Elegís dirección del penal. 2/3 probabilidad de victoria.</text>
+<text x="1030" y="633" text-anchor="middle" fill="#B8860B" font-weight="bold">NIVEL 2 ★</text>
+
+<text x="62" y="647"  text-anchor="middle" fill="#375623" font-weight="bold">3.2.1 WIN</text>
+<text x="310" y="647" text-anchor="middle" fill="#333">B1 desde P3.2: Tirás a la esquina izquierda</text>
+<text x="700" y="647" text-anchor="middle" fill="#333">El golero no llega. ¡Goool! Uruguay campeón en penales.</text>
+<text x="1030" y="647" text-anchor="middle" fill="#375623" font-weight="bold">VICTORIA</text>
+
+<text x="62" y="661"  text-anchor="middle" fill="#9C0006" font-weight="bold">3.2.2 LOSE</text>
+<text x="310" y="661" text-anchor="middle" fill="#333">B2 desde P3.2: Tirás al centro del arco</text>
+<text x="700" y="661" text-anchor="middle" fill="#333">El golero queda parado y lo ataja. Brasil campeón.</text>
+<text x="1030" y="661" text-anchor="middle" fill="#9C0006" font-weight="bold">DERROTA</text>
+
+<text x="62" y="675"  text-anchor="middle" fill="#375623" font-weight="bold">3.2.3 WIN</text>
+<text x="310" y="675" text-anchor="middle" fill="#333">B3 desde P3.2: Tirás a la esquina derecha</text>
+<text x="700" y="675" text-anchor="middle" fill="#333">Potente y cruzado. Red al fondo. Uruguay campeón.</text>
+<text x="1030" y="675" text-anchor="middle" fill="#375623" font-weight="bold">VICTORIA</text>
+</g>
+</svg>
+
+  <div class="footer">Microprocesadores · UCU · Laboratorio 6 · Junio 2026 · Nivel 2 incluido en rama 3.2 (penales)</div>
+</div>
+</body>
+</html>
