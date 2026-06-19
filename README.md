@@ -1,0 +1,1 @@
+# uruguay2026-bielsa
